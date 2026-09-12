@@ -554,6 +554,28 @@ button:disabled {
   background: rgba(45, 212, 191, 0.18);
 }
 
+.download-output-link {
+  min-height: 38px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(45, 212, 191, 0.38) !important;
+  border-radius: 7px !important;
+  padding: 0 14px !important;
+  background: rgba(45, 212, 191, 0.1) !important;
+  color: #99f6e4 !important;
+  box-shadow: none !important;
+  font-size: 13px !important;
+  letter-spacing: 0.02em;
+}
+
+.download-output-link:hover {
+  border-color: rgba(45, 212, 191, 0.6) !important;
+  background: rgba(45, 212, 191, 0.18) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
 .documentation-box,
 .empty-state {
   min-height: 420px;

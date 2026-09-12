@@ -351,7 +351,7 @@ function App() {
               <h2>Documentation Output</h2>
 
               {downloadUrl && (
-                <a href={downloadUrl}>
+                <a className="download-output-link" href={downloadUrl}>
                   Download Markdown
                 </a>
               )}
