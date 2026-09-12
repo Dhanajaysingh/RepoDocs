@@ -3,6 +3,7 @@ import './App.css'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
   || (import.meta.env.DEV ? 'http://localhost:5000' : '')
+const GITHUB_REPO_URL = 'https://github.com/Dhanajaysingh/documind-ai'
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
@@ -12,7 +13,6 @@ function App() {
   const [password, setPassword] = useState('')
   const [authStatus, setAuthStatus] = useState('')
   const [isCheckingAuth, setIsCheckingAuth] = useState(true)
-
   const [selectedFile, setSelectedFile] = useState(null)
   const [status, setStatus] = useState('')
   const [documentation, setDocumentation] = useState('')
@@ -163,7 +163,7 @@ function App() {
   if (isCheckingAuth) {
     return (
       <main className="app-shell">
-        <div className="loading-screen">Loading DocuMind AI...</div>
+        <div className="loading-screen">Loading RepoDocs...</div>
       </main>
     )
   }
@@ -171,22 +171,47 @@ function App() {
   return (
     <main className="app-shell">
       <header className="site-header">
-        <div className="brand">
-          <span className="brand-mark">D</span>
-          <span>DocuMind AI</span>
-        </div>
-
-        {currentUser && (
-          <div className="user-menu">
-            <span>{currentUser.name}</span>
-            <button type="button" className="ghost-button" onClick={handleLogout}>
-              Logout
-            </button>
+        <div className="site-header-inner">
+          <div className="brand">
+            <img className="brand-icon" src="/ai-technology.svg" alt="RepoDocs" />
+            <div>
+              <span>REPODOCS</span>
+              <small>Code docs workspace</small>
+            </div>
           </div>
-        )}
+
+          <nav className="header-nav" aria-label="Primary navigation">
+            <a href="#features">FEATURES</a>
+            <a href="#workspace">WORKSPACE</a>
+            {currentUser && <a href="#dashboard">DASHBOARD</a>}
+          </nav>
+
+          <div className="header-actions">
+            <a className="utility-pill" href={GITHUB_REPO_URL} target="_blank" rel="noreferrer" title="GitHub repository">
+              <svg className="github-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.23 1.84 1.23 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.58A12 12 0 0 0 12 .5Z" />
+              </svg>
+            </a>
+
+            {currentUser && (
+              <div className="user-menu">
+                <span
+                  className="user-avatar"
+                  title={currentUser.name}
+                  aria-label={`Signed in as ${currentUser.name}`}
+                >
+                  {currentUser.name.charAt(0).toUpperCase()}
+                </span>
+                <button type="button" className="ghost-button" onClick={handleLogout}>
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
       </header>
 
-      <section className="hero-card">
+      <section className="hero-card" id="workspace">
         <div className="hero-top">
           <div className="hero-copy">
             <p className="eyebrow">AI documentation workspace</p>
@@ -200,6 +225,12 @@ function App() {
               <li>Smart code scanning and extraction</li>
               <li>AI-generated Markdown with saved history</li>
             </ul>
+
+            <div className="hero-actions">
+              <a className="secondary-link" href={GITHUB_REPO_URL} target="_blank" rel="noreferrer">
+                View source on GitHub
+              </a>
+            </div>
           </div>
 
           {currentUser ? (
@@ -279,7 +310,7 @@ function App() {
 
       {currentUser && (
         <>
-          <section className="dashboard-card">
+          <section className="dashboard-card" id="dashboard">
             <div className="result-header">
               <h2>Scanned Documents Dashboard</h2>
               <button type="button" className="ghost-button" onClick={loadDocuments}>
@@ -336,6 +367,52 @@ function App() {
           </section>
         </>
       )}
+
+      <section className="feature-band" id="features">
+        <article>
+          <span>01</span>
+          <h2>Upload</h2>
+          <p>Send a zipped codebase through the secured upload flow.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h2>Analyze</h2>
+          <p>Extract, scan, and prepare source files for AI documentation.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h2>Export</h2>
+          <p>Save generated Markdown in your dashboard and download it anytime.</p>
+        </article>
+      </section>
+
+      <footer className="site-footer">
+        <div className="site-footer-inner">
+          <div>
+            <div className="brand footer-brand">
+              <img className="brand-icon" src="/ai-technology.svg" alt="RepoDocs" />
+              <div>
+                <span>REPODOCS</span>
+                <small>Built for fast project documentation.</small>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-meta">
+            <span>© 2026 REPODOCS. OPEN SOURCE PROJECT.</span>
+          </div>
+
+          <div className="footer-links">
+            <a href={GITHUB_REPO_URL} target="_blank" rel="noreferrer">
+              <svg className="github-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.23 1.84 1.23 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.58A12 12 0 0 0 12 .5Z" />
+              </svg>
+              <span>REPOSITORY</span>
+            </a>
+           
+          </div>
+        </div>
+      </footer>
     </main>
   )
 }
