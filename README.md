@@ -1,4 +1,4 @@
-# DocuMind-AI
+# RepoDocs
 
 ### AI-powered code documentation generator
 
@@ -7,7 +7,7 @@
 
 > Turn any code archive into polished project documentation.
 
-DocuMind AI is a full-stack AI-powered developer tool that analyzes an uploaded codebase and generates structured Markdown documentation automatically.
+RepoDocs is a full-stack AI-powered developer tool that analyzes an uploaded codebase and generates structured Markdown documentation automatically.
 
 Instead of manually understanding an unfamiliar repository and writing documentation from scratch, developers can upload a project archive and let DocuMind AI analyze the code and produce clear, reusable documentation.
 
@@ -15,7 +15,7 @@ Instead of manually understanding an unfamiliar repository and writing documenta
 
 ## 🚀 Live Demo
 
-**Try DocuMind AI:**  
+**Try RepoDocs:**  
 https://documind-ai-beta-sand.vercel.app/
 
 ---
